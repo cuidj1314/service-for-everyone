@@ -14,7 +14,7 @@
 | 权限管理 | <u>`SVN`的权限管理相当严格，可以按组、个人针对某个子目录的权限控制，每个目录下都会有个`.SVN`的隐藏文件。</u>                                                                          | <u>`Git`没有严格的权限管理控制，只有账号角色划分。</u>                                                                                                                                                                             |
 | 管理平台 | <u>有功能非常完善的插件。</u>                                                                                                                       | <u>除功能插件外，还有`Gitlab`、`Gerrit`、`Github`等。</u>                                                                                                                                                                  |
 
-# 一、Git基本介绍
+# 二、Git基本介绍
 
 ## 1、Git概述
 
@@ -29,8 +29,6 @@
 - 对非线性开发模式的强力支持（允许成千上万个并行开发的分支）
 - 完全分布式
 - 有能力高效管理类似 Linux 内核一样的超大规模项目（速度和数据量）
-
-
 
 ![](C:\Users\cuidj\AppData\Roaming\marktext\images\2022-07-26-11-10-55-image.png)
 
@@ -89,8 +87,6 @@ git config --global color.diff auto
 git config --global color.branch auto
 git config --global color.interactive auto
 git config --global --unset http.proxy   # remove  proxy configuration on git
-
-
 ```
 
 ### 3、增加/删除文件
@@ -111,7 +107,6 @@ $ git rm [file1] [file2] ...
 $ git rm --cached [file]
 # 改名文件，并且将这个改名放入暂存区
 $ git mv [file-original] [file-renamed]
-
 ```
 
 ### **4、代码提交**
@@ -132,7 +127,6 @@ $ git commit -am 'message'
 $ git commit --amend -m [message]
 # 重做上一次commit，并包括指定文件的新变化
 $ git commit --amend [file1] [file2] ...
-
 ```
 
 ### **5、分支**
@@ -196,7 +190,6 @@ $ git push [remote] [tag]
 $ git push [remote] --tags
 # 新建一个分支，指向某个tag
 $ git checkout -b [branch] [tag]
-
 ```
 
 ### 7、查看信息
@@ -243,7 +236,6 @@ $ git show --name-only [commit]
 $ git show [commit]:[filename]
 # 显示当前分支的最近几次提交
 $ git reflog
-
 ```
 
 ### **8、远程同步**
@@ -265,7 +257,6 @@ $ git push [remote] [branch]
 $ git push [remote] --force
 # 推送所有分支到远程仓库
 $ git push [remote] --all
-
 ```
 
 ### **9、撤销**
@@ -293,7 +284,6 @@ $ git revert [commit]
 # 暂时将未提交的变化移除，稍后再移入
 $ git stash
 $ git stash pop
-
 ```
 
 ### 10、其他
@@ -388,5 +378,3 @@ git fsck
 # 生成一个可供发布的压缩包
 $ git archive
 ```
-
-
