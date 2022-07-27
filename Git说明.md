@@ -378,35 +378,3 @@ git fsck
 # 生成一个可供发布的压缩包
 $ git archive
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-typora-root-url:../picture/
