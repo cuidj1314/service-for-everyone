@@ -58,9 +58,9 @@ Git一共包含四个区域，本地有三个区域，还有一个远程仓库�
 - **pull** (拉取) ： 从远程库拉到本地库，自动进行合并(merge)，然后放到到工作区，相当于 fetch+merge
 
 - **push**（推送） : 修改完成后，需要和团队成员共享代码时，将代码推送到远程仓库
-
+  
   详细流程图例：
-
+  
   ![](picture/git3.png)
 
 ## 4、Git的主要特征
@@ -387,4 +387,18 @@ git gc
 git fsck
 # 生成一个可供发布的压缩包
 $ git archive
+```
+
+git ssh公钥生成
+
+1、旧版
+
+```shell
+ssh-keygen -t rsa -C "邮箱"
+```
+
+2、新版（更新安全策略）
+
+```shell
+ssh-keygen -t ed25519 -C "邮箱"
 ```
