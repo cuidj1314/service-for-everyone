@@ -402,3 +402,80 @@ ssh-keygen -t rsa -C "邮箱"
 ```shell
 ssh-keygen -t ed25519 -C "邮箱"
 ```
+
+# 三、Docker搭建Gitlab
+
+## 1、获取镜像
+
+```shell
+docker pull gitlab/gitlab-ce
+```
+
+## 2、运行
+
+开始运行Docker镜像
+
+```shell
+docker run -d -p 8443:443 -p 8090:80 -p 8022:22 --restart always --name gitlab -v /usr/local/gitlab/etc:/etc/gitlab -v /usr/local/gitlab/log:/var/log/gitlab -v /usr/local/gitlab/data:/var/opt/gitlab --privileged=true gitlab/gitlab-ce
+```
+
+## 3、配置Gitlab
+
+1.首先，先进入容器
+
+```shell
+docker exec -it gitlab bash
+```
+
+[(1条消息) Docker中安装Gitlab详细全教程_连小黑的博客-CSDN博客_docker安装gitlab](https://blog.csdn.net/lianxiaohei/article/details/122665812)
+
+
+
+尝试 gitlab-ctl reconfigure 、gitlab-ctl restart
+
+查看端口号
+
+```
+netstat -tunlp | grep 8000
+```
+
+
+
+[如何使用 Docker Compose 安装 GitLab？ (czerniga.it)](https://www.czerniga.it/2021/11/14/how-to-install-gitlab-using-docker-compose/)
+
+
+
+完全删除
+
+```shell
+find / -name gitlab | xargs rm -rf
+```
+
+
+
+
+
+
+
+```shell
+version: '3.6'
+services:
+  web:
+    image: 'gitlab/gitlab-ce:latest'
+    restart: always
+    hostname: 'gitLab-sub'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://106.52.18.128'
+        # Add any other gitlab.rb configuration here, each on its own line
+    ports:
+      - '10080:80'
+      - '10443:443'
+      - '10022:22'
+    volumes:
+      - '$GITLAB_HOME/config:/etc/gitlab'
+      - '$GITLAB_HOME/logs:/var/log/gitlab'
+      - '$GITLAB_HOME/data:/var/opt/gitlab'
+    shm_size: '256m'
+```
+
