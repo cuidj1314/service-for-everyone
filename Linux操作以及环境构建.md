@@ -28,9 +28,15 @@ whereis xxxx
 
 
 
-
-
 ## 安装Docker
+
+
+
+查看镜像信息
+
+```shell
+docker inspect xxx
+```
 
 
 
@@ -179,4 +185,111 @@ gitlab-ctl reconfigure
 gitlab-ctl restart
 ```
 
+
+
+## Docker部署redmine
+
+### 1、搜索镜像
+
+```shell
+docker search redmine
+
+docker search mysql
+```
+
+### 2、下载镜像
+
+```shell
+docker pull docker.io/sameersbn/redmine
+
+docker pull docker.io/sameersbn/postgresql
+```
+
+### 3、实行
+
+```shell
+docker run --name=postgresql-redmine -e TZ="Asia/Shanghai" -d --env='DB_NAME=redmine' --env='DB_USER=redmine' --env='DB_PASS=redmine,.1q' --restart=always --volume=/home/docker/data/redmine:/var/lib/postgresql sameersbn/postgresql
+
+docker run --name=redmine -e TZ="Asia/Shanghai" -d --link=postgresql-redmine:postgresql --publish=10083:80 --env='REDMINE_PORT=10083' --restart=always --volume=/home/docker/data/redmine/redmine:/home/redmine/data sameersbn/redmine
+```
+
+## Docker部署jenkins
+
+安装前请确保主机已安装jdk
+
+### 1、拉取最新版本的jenkins镜像
+
+```shell
+docker pull jenkins/jenkins:latest
+```
+
+### 2、创建jenkins目录
+
+```
+mkdir -p /home/jenkins_home
+```
+
+### 3、运行jenkins并映射端口
+
+```shell
+docker run -u root -d --name jenkins_01 -p 9988:8080 -p 50000:50000 -v /home/jenkins_home:/var/jenkins_home jenkins/jenkins
+```
+
+### 4、查看密码
+
+```shell
+cat /var/jenkins_home/secrets/initialAdminPassword
+```
+
+## Docker部署SVN
+
+### 1、搜索镜像
+
+```shell
+docker search svn
+```
+
+### 2、下载镜像
+
+```shell
+docker pull docker.io/garethflowers/svn-server
+```
+
+### 3、搜索镜像
+
+```shell
+docker run --restart always --name svn -d -v /home/svn/repo:/var/opt/svn -p 3690:3690 garethflowers/svn-server
+```
+
+### 4、配置
+
+```shell
+#进入容器
+docker exec -it svn /bin/sh
+#创建aaa仓库
+svnadmin create aaa
+#修改svn目录中的文件配置
+vi svnserve.conf
+
+anon-access = none             # 匿名用户不可读写，也可设置为只读 read
+auth-access = write            # 授权用户可写
+password-db = passwd           # 密码文件路径，相对于当前目录
+authz-db = authz               # 访问控制文件
+realm = /var/opt/svn/svn       # 认证命名空间，会在认证提示界面显示，并作为凭证缓存的关键字，可以写仓库名称比如svn
+
+修改passwd、和authz文件，没有这两文件直接创建并修改: vi passwd 和 vi authz
+passwd文件内容如下：
+[users]
+# harry = harryssecret
+# sally = sallyssecret
+admin = 123456
+
+authz文件内容如下：
+[groups]
+owner = admin
+[/]               # / 表示所有仓库
+admin = rw        # 用户 admin 在所有仓库拥有读写权限
+[svn:/]           # 表示以下用户在仓库 svn 的所有目录有相应权限
+@owner = rw       # 表示 owner 组下的用户拥有读写权限
+```
 
