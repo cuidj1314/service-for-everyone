@@ -2,7 +2,7 @@
 
 ## 常用的Linux命令
 
-###  查看当前Linux系统的版本的方法
+### 查看当前Linux系统的版本的方法
 
 ```shell
 cat /proc/version 
@@ -26,9 +26,73 @@ find / -name gitlab | xargs rm -rf
 whereis xxxx
 ```
 
+### 安装vim
+
+```shell
+sudo apt-get install vim
+```
+
 
 
 ## 安装Docker
+
+### 获取软件最新源
+
+```shell
+sudo apt-get update
+```
+
+### 安装包允许apt通过HTTPS使用仓库安装依赖
+
+```shell
+sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+```
+
+### 添加Docker的官方GPG密钥
+
+```shell
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+```
+
+### 设置Docker稳定版仓库
+
+```shell
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+```
+
+### 添加仓库后，更新apt源索引
+
+```shell
+sudo apt-get update
+```
+
+### 安装最新版Docker
+
+```shell
+sudo apt-get install docker-ce
+```
+
+### 用户权限修正
+
+```shell
+sudo usermod -a -G docker $USER
+```
+
+### 重启docker
+
+```shell
+systemctl restart docker
+```
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -36,7 +100,10 @@ whereis xxxx
 
 ```shell
 docker inspect xxx
+
 ```
+
+ 
 
 
 
@@ -67,8 +134,6 @@ docker pull mattermost/mattermost-preview
 ```shell
 docker run --name mattermost-preview -d --publish 8065:8065 mattermost/mattermost-preview
 ```
-
-
 
 ## Docker部署GitLab
 
@@ -185,8 +250,6 @@ gitlab-ctl reconfigure
 gitlab-ctl restart
 ```
 
-
-
 ## Docker部署redmine
 
 ### 1、搜索镜像
@@ -292,4 +355,3 @@ admin = rw        # 用户 admin 在所有仓库拥有读写权限
 [svn:/]           # 表示以下用户在仓库 svn 的所有目录有相应权限
 @owner = rw       # 表示 owner 组下的用户拥有读写权限
 ```
-
