@@ -26,8 +26,6 @@ find / -name gitlab | xargs rm -rf
 rm -rf 文件夹名
 ```
 
-
-
 ### 查找操作
 
 ```shell
@@ -139,16 +137,6 @@ docker version
 docker info
 ```
 
-
-
-
-
-
-
-
-
-
-
 ## Docker部署Oracle19c
 
 ### 1、搜索镜像
@@ -176,8 +164,6 @@ sudo chmod 777 /oracle/oradata
 
 ```shell
 docker run -d  -p 1524:1521 -p 5502:5500 -e ORACLE_SID=ORCLCDB -e ORACLE_PDB=ORCLPDB1 -e ORACLE_PWD=sys@123456 -e ORACLE_EDITION=standard -e ORACLE_CHARACTERSET=AL32UTF8 -v /oracle/oradata:/opt/oracle/oradata --name orcl19c_03 heartu41/oracle19c
-
-
 ```
 
 ### 5、查看oracle是否安装成功
@@ -187,32 +173,39 @@ docker run -d  -p 1524:1521 -p 5502:5500 -e ORACLE_SID=ORCLCDB -e ORACLE_PDB=ORC
 docker logs -ft orcl19c_03
 ```
 
-
-
-
-
-
-
-
-
-### 3、实行
+### 进入容器设置密码
 
 ```shell
-docker run --network=host \
--e ORACLE_SID=orcl \
--e ORACLE_PDB=orclpdb1 \
--e ORACLE_PWD=sys@123456 \
--e ORACLE_EDITION=standard \
--e ORACLE_CHARACTERSET=AL32UTF8 \
--v /mydata/oracle/oradata:/opt/oracle/oradata \
--v /mydata/oracle/diag:/opt/oracle/diag \
---restart=always \
---name oracle \
-heartu41/oracle19c
-
-说明：这个过程需要执行拷贝过程，也是很慢的，请耐心等待！
-
+docker exec -it orcl19c_03 /bin/bash 
+./setPassword.sh ytxcc123 # ytxcc123为设置密码，这里修改为自己的即可
 ```
+
+### 设置PDB
+
+```shell
+show pdbs;
+alter session set container=ORCLPDB1;
+```
+
+### 创建用户
+
+```sql
+create user enterprise identified by 123456;
+GRANT CONNECT, RESOURCE, DBA TO enterprise;
+grant create session to enterprise;
+grant connect,resource to enterprise;
+
+# 查询所有用户
+SELECT * FROM ALL_USERS;
+
+# 连接
+账号：enterprise
+密码：123456
+端口：1521
+服务名称：ORCLPDB1DB1
+```
+
+
 
 
 
@@ -456,12 +449,6 @@ admin = rw        # 用户 admin 在所有仓库拥有读写权限
 [svn:/]           # 表示以下用户在仓库 svn 的所有目录有相应权限
 @owner = rw       # 表示 owner 组下的用户拥有读写权限
 ```
-
-
-
-
-
-
 
 ```
 docker run -d  -p 1524:1521 -p 5502:5500 -e ORACLE_SID=ORCLCDB -e ORACLE_PDB=ORCLPDB1 -e ORACLE_PWD=sys@123456 -e ORACLE_EDITION=standard -e ORACLE_CHARACTERSET=AL32UTF8 -v /oracle/oradata:/opt/oracle/oradata --name orcl19c_03 heartu41/oracle19c
