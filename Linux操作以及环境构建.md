@@ -20,6 +20,14 @@ netstat -tunlp | grep 8000
 find / -name gitlab | xargs rm -rf
 ```
 
+### 删除文件夹
+
+```shell
+rm -rf 文件夹名
+```
+
+
+
 ### 查找操作
 
 ```shell
@@ -31,8 +39,6 @@ whereis xxxx
 ```shell
 sudo apt-get install vim
 ```
-
-
 
 ## 安装Docker
 
@@ -84,26 +90,102 @@ sudo usermod -a -G docker $USER
 systemctl restart docker
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
 查看镜像信息
 
 ```shell
 docker inspect xxx
+```
+
+## Docker命令
+
+### 启动docker
+
+```shell
+systemctl start docker
+```
+
+### 关闭docker
+
+```shell
+systemctl stop docker
+```
+
+### 重启docker
+
+```shell
+systemctl restart docker
+```
+
+### docker设置随服务启动而自启动
+
+```java
+systemctl enable docker
+```
+
+### 查看docker 运行状态
+
+```shell
+systemctl status docker
+# 如果是在运行中 输入命令后 会看到绿色的active
+```
+
+### 查看docker 版本号信息
+
+```shell
+docker version
+```
+
+```shell
+docker info
+```
+
+
+
+
+
+
+
+
+
+
+
+## Docker部署Oracle19c
+
+### 1、搜索镜像
+
+```
+docker search oracle19c
+```
+
+### 2、下载镜像(十分慢)
+
+```shell
+docker pull heart/oracle19c
+```
+
+### 3、创建挂载文件
+
+```shell
+# 创建文件
+sudo mkdir -p /oracle/oradata
+# 授权，不授权会导致后面安装失败
+sudo chmod 777 /oracle/oradata
+```
+
+### 4、实行
+
+```shell
+docker run -d  -p 1524:1521 -p 5502:5500 -e ORACLE_SID=ORCLCDB -e ORACLE_PDB=ORCLPDB1 -e ORACLE_PWD=sys@123456 -e ORACLE_EDITION=standard -e ORACLE_CHARACTERSET=AL32UTF8 -v /oracle/oradata:/opt/oracle/oradata --name orcl19c_03 heartu41/oracle19c
+
 
 ```
 
- 
+### 5、查看oracle是否安装成功
+
+```shell
+# 查看启动日志
+docker logs -ft orcl19c_03
+```
 
 
 
@@ -112,6 +194,25 @@ docker inspect xxx
 
 
 
+
+### 3、实行
+
+```shell
+docker run --network=host \
+-e ORACLE_SID=orcl \
+-e ORACLE_PDB=orclpdb1 \
+-e ORACLE_PWD=sys@123456 \
+-e ORACLE_EDITION=standard \
+-e ORACLE_CHARACTERSET=AL32UTF8 \
+-v /mydata/oracle/oradata:/opt/oracle/oradata \
+-v /mydata/oracle/diag:/opt/oracle/diag \
+--restart=always \
+--name oracle \
+heartu41/oracle19c
+
+说明：这个过程需要执行拷贝过程，也是很慢的，请耐心等待！
+
+```
 
 
 
@@ -318,7 +419,7 @@ docker search svn
 docker pull docker.io/garethflowers/svn-server
 ```
 
-### 3、搜索镜像
+### 3、实行
 
 ```shell
 docker run --restart always --name svn -d -v /home/svn/repo:/var/opt/svn -p 3690:3690 garethflowers/svn-server
@@ -354,4 +455,14 @@ owner = admin
 admin = rw        # 用户 admin 在所有仓库拥有读写权限
 [svn:/]           # 表示以下用户在仓库 svn 的所有目录有相应权限
 @owner = rw       # 表示 owner 组下的用户拥有读写权限
+```
+
+
+
+
+
+
+
+```
+docker run -d  -p 1524:1521 -p 5502:5500 -e ORACLE_SID=ORCLCDB -e ORACLE_PDB=ORCLPDB1 -e ORACLE_PWD=sys@123456 -e ORACLE_EDITION=standard -e ORACLE_CHARACTERSET=AL32UTF8 -v /oracle/oradata:/opt/oracle/oradata --name orcl19c_03 heartu41/oracle19c
 ```
