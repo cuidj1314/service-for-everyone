@@ -67,6 +67,14 @@ systemctl status docker  # 如果是在运行中 输入命令后 会看到绿色
 # 查看docker 版本号信息
 docker version
 docker info
+# 加载镜像
+docker load -i xxx.tar
+# 删除镜像
+docker rmi xxx
+#将本地文件拷贝到Docker内
+docker cp 本地文件路径 容器ID/容器名:容器内路径
+
+
 ```
 
 ## Docker常用服务部署
@@ -312,5 +320,4 @@ grant all privileges on database batteri to admin;
 # 说明：
 # 将整个数据库的增删改查权限授予用户
 grant select,insert,update,delete on database admin to readonly;
-
 ```
