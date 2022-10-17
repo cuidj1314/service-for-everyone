@@ -11,9 +11,6 @@ cat /proc/version
 netstat -tunlp | grep 8000
 # 查找指定名字的文件夹
 whereis xxxx
-
-
-
 ```
 
 ### 删除操作
@@ -23,8 +20,6 @@ whereis xxxx
 find / -name gitlab | xargs rm -rf
 # 删除文件夹
 rm -rf 文件夹名
-
-
 ```
 
 ### 安装vim
@@ -56,8 +51,6 @@ systemctl restart docker
 docker inspect xxx
 ```
 
-
-
 ## Docker命令
 
 ```shell
@@ -75,8 +68,6 @@ systemctl status docker  # 如果是在运行中 输入命令后 会看到绿色
 docker version
 docker info
 ```
-
-
 
 ## Docker常用服务部署
 
@@ -243,8 +234,6 @@ mkdir -p /home/jenkins_home
 docker run -u root -d --name jenkins_01 -p 9988:8080 -p 50000:50000 -v /home/jenkins_home:/var/jenkins_home jenkins/jenkins
 # 查看密码
 cat /var/jenkins_home/secrets/initialAdminPassword
-
-
 ```
 
 ### 部署SVN
@@ -284,4 +273,44 @@ owner = admin
 admin = rw        # 用户 admin 在所有仓库拥有读写权限
 [svn:/]           # 表示以下用户在仓库 svn 的所有目录有相应权限
 @owner = rw       # 表示 owner 组下的用户拥有读写权限
+```
+
+### 部署Postgres
+
+```shell
+# 搜索镜像
+docker search postgres
+# 下载镜像
+docker pull postgres
+# 实行
+docker run -d --name postgres --restart always -e POSTGRES_USER='postgres' -e POSTGRES_PASSWORD='abc123' -e ALLOW_IP_RANGE=0.0.0.0/0 -v /home/postgres/data:/var/lib/postgresql -p 5432:5432 -t postgres
+# 更新软件源列表
+apt-get update 
+# 安装vim
+apt-get -y install vim
+# 切换到目录/var/lib/postgresql/data
+cd /var/lib/postgresql/data
+# 修改：在所有IP地址上监听，从而允许远程连接到数据库服务器：
+listening_address: '*'
+
+# 客户端连接
+#DB名:postgres
+# 用户名：postgres
+# 密码：postgres
+
+# 修改编码格式（未实行）
+update pg_database set encoding = pg_char_to_encoding('UTF8') where datname = 'basemap'
+# 登录数据库
+psql -U postgres -W
+# 创建用户
+create user admin with password 'admin';
+# 创建DB
+create database batteri owner admin;
+# 授权(将全部权限授予用户admin)
+grant all privileges on database batteri to admin;
+
+# 说明：
+# 将整个数据库的增删改查权限授予用户
+grant select,insert,update,delete on database admin to readonly;
+
 ```
