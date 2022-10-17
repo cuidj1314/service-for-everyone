@@ -22,10 +22,20 @@ find / -name gitlab | xargs rm -rf
 rm -rf 文件夹名
 ```
 
+### 端口映射
+
+```shell
+ssh -fgN -L 22(新端口):ip:22(原端口) localhost
+```
+
 ### 安装vim
 
 ```shell
 sudo apt-get install vim
+
+# vim常用命令
+w 保存 不退出   ：q! 强制退出不保存
+wq 保存 退出   ： e! 放弃所有修改     ：q 退出
 ```
 
 ### 安装Docker
@@ -73,8 +83,6 @@ docker load -i xxx.tar
 docker rmi xxx
 #将本地文件拷贝到Docker内
 docker cp 本地文件路径 容器ID/容器名:容器内路径
-
-
 ```
 
 ## Docker常用服务部署
