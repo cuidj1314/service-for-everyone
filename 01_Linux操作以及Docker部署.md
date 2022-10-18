@@ -28,6 +28,17 @@ rm -rf 文件夹名
 ssh -fgN -L 22(新端口):ip:22(原端口) localhost
 ```
 
+### 文件夹权限
+
+```shell
+#单个文件夹
+chmod 777 文件夹名（/xxx/xx/xx/）
+#文件夹及其子文件
+chmod -R 777 文件夹名（/xxx/xx/xx/）
+```
+
+
+
 ### 安装vim
 
 ```shell
