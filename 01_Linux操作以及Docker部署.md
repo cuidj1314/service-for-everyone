@@ -18,6 +18,8 @@ whereis xxxx
 ```shell
 # 找到gitlab文件夹并删除
 find / -name gitlab | xargs rm -rf
+# 删除文件
+rm -r 文件名
 # 删除文件夹
 rm -rf 文件夹名
 ```
@@ -37,8 +39,6 @@ chmod 777 文件夹名（/xxx/xx/xx/）
 chmod -R 777 文件夹名（/xxx/xx/xx/）
 ```
 
-
-
 ### 安装vim
 
 ```shell
@@ -48,6 +48,22 @@ sudo apt-get install vim
 w 保存 不退出   ：q! 强制退出不保存
 wq 保存 退出   ： e! 放弃所有修改     ：q 退出
 ```
+
+### 主机间拷贝
+
+```bash
+#把当前一个文件copy到远程服务器上：
+scp /home/x.txt root@192.168.1.1:/home/root
+
+
+
+```
+
+
+
+
+
+
 
 ### 安装Docker
 
@@ -90,10 +106,18 @@ docker version
 docker info
 # 加载镜像
 docker load -i xxx.tar
+# 删除容器
+docker rm xxx
 # 删除镜像
 docker rmi xxx
 #将本地文件拷贝到Docker内
 docker cp 本地文件路径 容器ID/容器名:容器内路径
+#镜像备份
+docker commit -p 镜像id 备份名
+#导出到本地目录
+docker save 备份名 > /Users/用户名/Desktop/备份名.tar
+
+
 ```
 
 ## Docker常用服务部署
