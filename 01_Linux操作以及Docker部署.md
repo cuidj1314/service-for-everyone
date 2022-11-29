@@ -49,21 +49,16 @@ w 保存 不退出   ：q! 强制退出不保存
 wq 保存 退出   ： e! 放弃所有修改     ：q 退出
 ```
 
-### 主机间拷贝
+### 拷贝
 
 ```bash
 #把当前一个文件copy到远程服务器上：
 scp /home/x.txt root@192.168.1.1:/home/root
-
-
-
+#本地到Docker
+docker cp 本地路径 容器id或者容器名:容器内路径
+#Docker到本地
+docker cp 容器id或者容器名:容器内路径 本地路径
 ```
-
-
-
-
-
-
 
 ### 安装Docker
 
@@ -115,9 +110,7 @@ docker cp 本地文件路径 容器ID/容器名:容器内路径
 #镜像备份
 docker commit -p 镜像id 备份名
 #导出到本地目录
-docker save 备份名 > /Users/用户名/Desktop/备份名.tar
-
-
+docker save 备份名 -o /Users/用户名/Desktop/备份名.tar
 ```
 
 ## Docker常用服务部署
