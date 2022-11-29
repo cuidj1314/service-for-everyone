@@ -52,8 +52,16 @@ wq 保存 退出   ： e! 放弃所有修改     ：q 退出
 ### 拷贝
 
 ```bash
+#文件拷贝
 #把当前一个文件copy到远程服务器上：
 scp /home/x.txt root@192.168.1.1:/home/root
+
+#文件夹拷贝 -r(递归)
+#Linux到本机（Windows）
+scp -r root@ip:/usr/home E:\test
+#本机（Windows）到Linux
+scp -r E:\test root@ip:/usr/home
+
 #本地到Docker
 docker cp 本地路径 容器id或者容器名:容器内路径
 #Docker到本地
