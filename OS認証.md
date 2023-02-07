@@ -399,3 +399,12 @@
 ​		C.UpdateCustomer
 
 ​		D.DeleteCustomer
+
+### 静的エンティティ
+
+- 実行時は変更できません
+- デフォルトのアトリビュートが4つです
+  - Id
+  - Label
+  - Order
+  - Is_active
