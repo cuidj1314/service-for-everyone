@@ -272,6 +272,46 @@ C、Ignore
 
 
 
+### 基本的な画面開発2
+
+#### １、On ClickプロパティではLinkとButtonの動作を定義できます。次のうち、説明として正しいものはどれですか。
+
+A、Linkでできるのは、画面への移動のみである。
+
+B、Buttonでできるのは、リクエストの送信のみである。
+
+<font color="red">C、Buttonでできるのは、リクエストの送信のみである。</font>
+
+D、LinkとButtonでできるのは、画面への移動のみである。
+
+#### ２、次のうち、Navigateメソッドを使用するButtonをクリックした後の画面のライフサイクルの順序として正しいものはどれですか。
+
+<font color="red">A、Preparationを実行した後、遷移先画面を描画する。</font>
+
+B、画面アクションを実行し、Preparationを実行し、遷移先画面を描画する。
+
+C、遷移先画面を描画した後、その画面のPreparationを実行する。
+
+D、Preparationを実行した後、画面アクションを実行する。
+
+#### ３、次のうち、Submitメソッドが使用するHTTPリクエストメソッドはどれですか。
+
+A、PUT
+
+<font color="red">B、POST</font>
+
+C、GET
+
+D、PATCH
+
+#### ４、画面アクションをEnd要素で終了した場合と「(Current Screen)」へのDestinationで終了した場合の結果は同じになります。
+
+A、TRUE
+
+<font color="red">B、FALSE</font>
+
+
+
 
 
 ### データベースエンティティ
