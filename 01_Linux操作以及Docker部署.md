@@ -1,6 +1,17 @@
 # Linux操作まとめ
 
-## 常用的Linux命令
+## 一、常用的Linux命令
+
+### 创建操作
+
+```bash
+# 创建一个空目录
+mkdir test1
+# 创建权限为777的目录
+mkdir -m 777 test1
+# 递归创建多个目录
+mkdir -p test2/test22
+```
 
 ### 查看操作
 
@@ -91,7 +102,9 @@ systemctl restart docker
 docker inspect xxx
 ```
 
-## Docker命令
+
+
+## 二、Docker命令
 
 ```shell
 # 启动docker
@@ -130,7 +143,54 @@ docker save 备份名 -o /Users/用户名/Desktop/备份名.tar
 docker exec -it 容器名/id /bin/bash
 ```
 
-## Docker常用服务部署
+
+
+## 三、SVN备份Shell
+
+```bash
+# 备份到windows的共享目录中，打成tar.gz
+
+#!/bin/bash
+
+# Windowsシステムの情報設定
+WIN_SHARE="//xxx.xx.xx.x/svnbackup2"
+WIN_USER="xxxxxx"
+WIN_PASS="xxxxxx"
+
+# マウント情報の設定
+MONT_SHARE="/mnt/svnbackup2"
+
+# SVN庫の情報の設定
+SVN_REPO="/usr/svn/RPGプロジェクト"
+
+# バックアップのフォルダ名
+BACKUP_DIR="/home/svnBackUp"
+
+# バックアップのファイル名
+BACKUP_FILE="svn_backup_$(date +%Y%m%d%H%M%S).tar.gz"
+
+# CIFSマウント
+sudo mount -t cifs $WIN_SHARE $MONT_SHARE -o username=$WIN_USER,password=$WIN_PASS
+
+# バックアップのフォルダを作成する、存在している場合（-p）、スキップする
+sudo mkdir -p $BACKUP_DIR
+
+# svnをバックアップ
+sudo svnadmin dump $SVN_REPO | gzip > $BACKUP_DIR/$BACKUP_FILE
+
+# windowsとおなじ
+sudo rsync -avz $BACKUP_DIR/$BACKUP_FILE $MONT_SHARE
+
+# もともとのバックアップを削除する（最近の二つを保留するだけです）
+cd $BACKUP_DIR
+ls -1t svn_backup_* | tail -n +3 | xargs rm -f
+
+sudo umount $MONT_SHARE
+```
+
+
+
+## 四、Docker常用服务部署
 
 ### 部署Nexus
 
