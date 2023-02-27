@@ -25,7 +25,7 @@ goto ning
 
 :gaibu
 echo 修正中......
-netsh interface ip set address name="イーサネット" source=static addr=172.16.73.189 mask=255.255.255.x gateway=xx.xx.xx.xx gwmetric=1
+netsh interface ip set address name="イーサネット" source=static addr=172.16.73.xxx mask=255.255.255.x gateway=xx.xx.xx.xx gwmetric=1
 netsh interface ip set dns name="イーサネット" source=static addr=xxx.xx.x.3
 netsh interface ip add dns name="イーサネット" addr=xxx.xx.x.13 index=2 
 ipconfig /flushdns
@@ -35,7 +35,7 @@ goto end
 
 :naibu
 echo 修正中......
-netsh interface ip set address name="イーサネット" source=static addr=172.16.73.189 mask=255.255.255.x gateway=xx.xx.xx.xx gwmetric=1
+netsh interface ip set address name="イーサネット" source=static addr=172.16.73.xxx mask=255.255.255.x gateway=xx.xx.xx.xx gwmetric=1
 netsh interface ip set dns name="イーサネット" source=static addr=xxx.xx.x.3
 netsh interface ip add dns name="イーサネット" addr=xxx.xx.x.13 index=2 
 ipconfig /flushdns
