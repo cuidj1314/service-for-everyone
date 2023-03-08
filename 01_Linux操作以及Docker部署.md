@@ -50,6 +50,16 @@ chmod 777 文件夹名（/xxx/xx/xx/）
 chmod -R 777 文件夹名（/xxx/xx/xx/）
 ```
 
+### 防火墙
+
+```bash
+# 查看防火墙状态
+$  sudo ufw status
+# Status: inactive------>未启用
+```
+
+
+
 ### 安装vim
 
 ```shell
