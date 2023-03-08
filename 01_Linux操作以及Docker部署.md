@@ -102,6 +102,27 @@ systemctl restart docker
 docker inspect xxx
 ```
 
+### 周期性执行指令
+
+```bash
+# 编辑crontab
+$ crontab -e
+# 在打开的编辑器中添加以下行
+* * * * * /path/to/your/your.sh
+
+# 在crontab中设置的执行时间应该符合特定的格式：分 时 日 月 周 命令。
+# 分 - 0-59
+# 时 - 0-23
+# 日 - 1-31
+# 月 - 1-12
+# 周 - 0-7（0和7都表示星期日）  
+# 注意：上面的一个星号可以用多个值替换，中间用（,）隔开即可。
+```
+
+
+
+
+
 
 
 ## 二、Docker命令
