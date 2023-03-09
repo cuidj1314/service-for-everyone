@@ -112,13 +112,13 @@ systemctl restart docker
 docker inspect xxx
 ```
 
-### 周期性执行指令
+### 周期性执行指令Crontab
 
 ```bash
-# 编辑crontab
+# 编辑crontab（root下执行）
 $ crontab -e
 # 在打开的编辑器中添加以下行
-* * * * * /path/to/your/your.sh
+$ * * * * * /bin/sh /path/to/your/your.sh
 
 # 在crontab中设置的执行时间应该符合特定的格式：分 时 日 月 周 命令。
 # 分 - 0-59
@@ -127,11 +127,10 @@ $ crontab -e
 # 月 - 1-12
 # 周 - 0-7（0和7都表示星期日）  
 # 注意：上面的一个星号可以用多个值替换，中间用（,）隔开即可。
+
+# 查看定时任务列表
+$ crontab -l
 ```
-
-
-
-
 
 
 
@@ -178,10 +177,12 @@ docker exec -it 容器名/id /bin/bash
 
 ## 三、SVN备份Shell
 
-```bash
-# 备份到windows的共享目录中，打成tar.gz
+### １、Shell作成（svn_backup.sh）
 
-#!/bin/bash
+说明： 备份到windows的共享目录中，打成tar.gz
+
+```bash
+#!/bin/sh
 
 # Windowsシステムの情報設定
 WIN_SHARE="//xxx.xx.xx.x/svnbackup2"
@@ -211,12 +212,25 @@ sudo svnadmin dump $SVN_REPO | gzip > $BACKUP_DIR/$BACKUP_FILE
 
 # windowsとおなじ
 sudo rsync -avz $BACKUP_DIR/$BACKUP_FILE $MONT_SHARE
+# windows余計なバックアップを削除する
+cd $MONT_SHARE
+ls -1t svn_backup_* | tail -n +3 | xargs rm -f
 
 # もともとのバックアップを削除する（最近の二つを保留するだけです）
 cd $BACKUP_DIR
 ls -1t svn_backup_* | tail -n +3 | xargs rm -f
 
 sudo umount $MONT_SHARE
+```
+
+### ２、设置Crontab
+
+```bash
+# root下执行（初次可以指定打开方式，vim容易点儿）
+$ crontab -e
+
+# 每天凌晨4点自动执行备份Shell
+0 4 * * * /bin/sh /home/svnBackUp/svn_backup.sh
 ```
 
 
