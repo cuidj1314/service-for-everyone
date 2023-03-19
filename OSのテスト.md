@@ -10,6 +10,10 @@
 
  <span style="color:red;background:yellow;">A、Web、モバイル、およびサービス</span>
 
+```bash
+# OutSystemsのアプリケーションは、Web、モバイル、サービスのいずれかです。
+```
+
 B、Web、モバイル、サービス、および拡張機能
 
 C、モジュールと拡張機能
@@ -24,6 +28,10 @@ B、任意の要素を公開でき、任意のアプリケーションのモジ�
 
 <span style="color:red;background:yellow;">C、Publicプロパティが［Yes］に設定されている要素のみを公開でき、任意のアプリケーションのモジュールで再利用できる。</span>
 
+```bash
+# 要素を他のモジュールで利用するには、Publicプロパティが［Yes］に設定されている必要があります。
+```
+
 D、Publicプロパティが［Yes］に設定されている要素のみを公開でき、同じアプリケーションのモジュールでのみ再利用できる。
 
 ##### ３、次のうち、コンシューマモジュールに関する説明として正しいものはどれですか。
@@ -31,6 +39,10 @@ D、Publicプロパティが［Yes］に設定されている要素のみを公�
 A、同じアプリケーションのプロデューサモジュールからのみ要素を再利用できる。
 
 <span style="color:red;background:yellow;">B、プロデューサモジュール内で公開されている要素のみを再利用できる。</span>
+
+```bash
+# モジュール内の公開要素のみを環境内の他のモジュールが再利用できます。
+```
 
 C、任意のプロデューサモジュールから任意の要素を再利用できる。
 
@@ -46,11 +58,19 @@ D、他のアプリケーションのプロデューサモジュールからの�
 
 <span style="color:red;background:yellow;">A、はい</span>
 
+```bash
+# エンティティ、アトリビュート、インデックスは、モジュールのパブリッシュ時にプラットフォームで自動的に管理されます。
+```
+
 B、いいえ
 
 ##### ２、エンティティとアトリビュートは、データベースで何として作成されますか。
 
 <span style="color:red;background:yellow;">A、テーブルと列</span>
+
+```bash
+# エンティティは、データベーステーブルに保持されます。新しいレコードは対応するテーブルに行として挿入されます。
+```
 
 B、テーブルとインデックス
 
@@ -64,6 +84,10 @@ A、Text
 
 <span style="color:red;background:yellow;">B、Integer</span>
 
+```bash
+# 名前に基づいて自動的にデータ型が推定されます。*CountはIntegerにマッピングされます。
+```
+
 C、Boolean
 
 D、Date
@@ -73,6 +97,10 @@ D、Date
 A、Insert、Update、Delete
 
 <span style="color:red;background:yellow;">B、Create、CreateOrUpdate、Update、Get、GetForUpdate、Delete</span>
+
+```bash
+# OutSystemsで定義されたエンティティには、これらのエンティティアクションがあります。静的エンティティの場合は、Getエンティティアクションのみです。
+```
 
 C、GET、POST、DELETE
 
@@ -84,6 +112,10 @@ A、TRUE
 
 <span style="color:red;background:yellow;">B、FALSE</span>
 
+```bash
+# Is Mandatoryプロパティを使用して、入力パラメータを必須に設定することができます。
+```
+
 ##### ６、出力パラメータはどこで使用できますか。
 
 A、実装スコープ内のみ。
@@ -91,6 +123,10 @@ A、実装スコープ内のみ。
 B、実装スコープ外のみ。
 
 <span style="color:red;background:yellow;">C、実装スコープ内と実装スコープ外の両方。</span>
+
+```bash
+# 値をスコープ内の出力パラメータに値を割り当て、スコープ外に返すようにする必要があります。
+```
 
 ##### ７、ストラクチャが持つことができるアトリビュートのデータ型はどれですか。
 
@@ -100,11 +136,19 @@ B、Basic、String、およびObject
 
 <span style="color:red;background:yellow;">C、Basic、Structure、Entity、およびList</span>
 
+```bash
+# これら4つはOutSystemsのデータ型です。なお、Basic内には、Text、Integer、Email、Currencyなどが含まれます。
+```
+
 D、BasicとListのみ。
 
 ##### ８、次のうち、OutSystemsのリストに関する説明として正しいものはどれですか。
 
 <span style="color:red;background:yellow;">A、同じデータ型の要素の集合。</span>
+
+```bash
+# OutSystemsのリストは一様、つまり、すべての要素のデータが同じです。
+```
 
 B、データ型が異なる可能性がある要素の集合。
 
@@ -756,13 +800,83 @@ A、はい
 
 B、FALSE
 
+##### ５、優れたUIパターンを備えた画面を設計するためのウィジェットがOutSystems UIおよびリッチウィジェットで提供されており、これらはService Studioツールボックスで利用できます。
+
+<span style="color:red;background:yellow;">A、正しい</span>
+
+```bash
+# これらのウィジェットは、ドラッグ&ドロップするだけで簡単に画面に配置することができるビルド済みのUIパターンです。
+```
+
+B、誤り
+
+##### ６、次のうち、リッチウィジェットのList_Navigationウィジェットに関する説明として正しいものはどれですか。
+
+<span style="color:red;background:yellow;">A、複数のページを持つTable Recordsのナビゲータであり、定義されている数の要素を各ページに表示する。</span>
+
+```bash
+# このウィジェットにより、複数のページを持つテーブルでページネーション機能を使用することができます。
+```
+
+B、複数のページを持つFormのナビゲータであり、定義されている数の要素を各ページに表示する。
+
+##### ７、次のうち、リッチウィジェットのList_SortColumnウィジェットに関する説明として正しいものはどれですか。
+
+A、Formの列をクリックすると、その列でソートすることができる。
+
+<span style="color:red;background:yellow;">B、Table Recordsの列をクリックすると、その列でソートすることができる。</span>
+
+```bash
+# このウィジェットを使用すると、列をクリックすることによりTable Recordsが更新され、新しい順序で行が表示されるアクションを実行できます。
+```
+
+##### ８、アプリケーション開発を高速化するため、OutSystemsには一般的なシナリオ向けのロジックとデータを含むビルド済みの画面が用意されています。
+
+<span style="color:red;background:yellow;">A、TRUE</span>
+
+```bash
+# これらのビルド済みの画面は画面テンプレートであり、サンプルデータを使用してUIに入力したりロジックを有効にしたりします。
+```
+
+B、FALSE
+
+##### ９、次のうち、テンプレートを使用して画面を作成する場合の説明として正しいものはどれですか。
+
+A、画面を作成するためにサンプルデータを含むテンプレートのコピーが作成される。サンプルデータを置き換えることはできない。
+
+<span style="color:red;background:yellow;">B、画面を作成するためにサンプルデータを含むテンプレートのコピーが作成される。サンプルデータを実際のデータに置き換えることができる。</span>
+
+```bash
+# 作成される画面は、レイアウト、ウィジェット、スタイル、ロジックなど、テンプレートのすべてをコピーしたものです。
+```
+
+##### １０、自動データ置換を備えたウィジェット（Tables Records、List Records、Formなど）のデータを置き換えるには、どのようにすればよいですか。
+
+A、ウィジェットを右クリックして、［Import Data from Entity］を選択する。
+
+B、ウィジェットを削除し、適切なエンティティを使用してもう一度作成する。
+
+<span style="color:red;background:yellow;">C、エンティティをウィジェットにドラッグ&ドロップする。</span>
+
+```bash
+# この機能を使用すると、サンプルデータを独自のアプリケーションデータにすばやく置き換えることができます。
+```
+
+D、エンティティを右クリックして、［Import Data from Excel］を選択する。
+
+##### １１、リスト画面と詳細画面を作成するには、どのようにすればよいですか。
+
+A、エンティティをUIフローにドラッグ&ドロップすると、リスト画面と詳細画面が自動的に作成される。
+
+<span style="color:red;background:yellow;">B、エンティティをUIフローにドラッグ&ドロップしてリスト画面を作成し、この手順を繰り返して詳細画面を作成する。</span>
+
+```bash
+# スキャフォールディングパターンを使用すると、データ駆動型の画面の作成を自動化することができ、簡単な画面やロジックを数回のクリックで作成できます。
+```
 
 
 
-
-
-
-
+ 
 
 
 
