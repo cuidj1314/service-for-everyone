@@ -164,6 +164,10 @@ A、画面のライフサイクルフロー。
 
 <span style="color:red;background:yellow;">B、画面上のウィジェットの階層。</span>
 
+```bash
+# Widget Treeに表示されるツリー状のストラクチャを使用して、開発者は画面のストラクチャを参照し、微調整することができます。
+```
+
 C、アプリケーションの画面のリスト。
 
 D、既存の画面テンプレート。
@@ -176,6 +180,10 @@ B、入力パラメータのみ。
 
 <span style="color:red;background:yellow;">C、入力パラメータとローカル変数。</span>
 
+```bash
+# そのとおりです。画面に出力パラメータはありません。
+```
+
 D、入力パラメータ、出力パラメータ、ローカル変数。
 
 ##### ３、画面のPreparationの主な目的は何ですか。
@@ -184,21 +192,33 @@ A、描画するウィジェットを決定する。
 
 <span style="color:red;background:yellow;">B、データベースからデータを取得する。</span>
 
+```bash
+# 画面を描画するときに使用するデータは、画面のPreparationを使用して取得します。
+```
+
 C、フォームのデータをサーバーに送信する。
 
 D、ユーザーを適切な画面にリダイレクトする。
 
 ##### ４、 画面のライフサイクルでは、Preparationはブラウザで実行されます。
 
-A、TRUE
+A、正しい
 
-<span style="color:red;background:yellow;">B、FALSE</span>
+<span style="color:red;background:yellow;">B、誤り</span>
+
+```bash
+# Preparationには、画面を描画する前に実行されるサーバー側のロジックが含まれます。
+```
 
 ##### ５、Aggregateの［Sources］セクションは、何のために使用しますか。
 
 A、Aggregateの出力レコードをテストするための値を定義するため。
 
 <span style="color:red;background:yellow;">B、レコードの取得元となるエンティティを定義するため。</span>
+
+```bash
+# そのとおりです。Aggregateは、リレーションが定義されている1つ以上のソースエンティティをサポートします。
+```
 
 C、特定のレコードのサブセットを取得する条件を定義するため。
 
@@ -207,6 +227,10 @@ D、Aggregateの出力レコードの順序を定義するため。
 ##### ６、Aggregateの［Test Values］セクションは、何のために使用しますか。
 
 <span style="color:red;background:yellow;">A、Aggregateのプレビューデータをテストするための値を定義するため。</span>
+
+```bash
+# Test Valuesセクションは、Aggregateをテストして出力レコードをプレビューするために使用します。 ［Filters］セクションと［Sort］セクションで使用する変数のテスト値を設定することができます。
+```
 
 B、すべてのレコードではなく特定のレコードを取得するための条件を設定するため。
 
@@ -218,6 +242,10 @@ D、レコードの取得元となるエンティティを定義するため。
 
 <span style="color:red;background:yellow;">A、Max. Recordsプロパティを使用する。</span>
 
+```bash
+# Max. Recordsは、データベースから取得されるレコードの最大数を定義します。
+```
+
 B、Length値を使用する。
 
 C、Count値を使用する。
@@ -226,15 +254,23 @@ D、［Sorting］を使用する。
 
 ##### ８、Aggregateによって生成されたSQLを参照することができます。
 
-<span style="color:red;background:yellow;">A、TRUE</span>
+<span style="color:red;background:yellow;">A、正しい</span>
 
-B、FALSE
+```bash
+# Executed SQLプロパティで、Aggregateによって生成されるSQLを参照することができます。
+```
+
+B、誤り
 
 ８、次のうち、Expressionウィジェットに関する説明として正しいものはどれですか。
 
 A、静的なテキストのみを表示する。
 
 <span style="color:red;background:yellow;">B、実行時に計算されたテキストを表示する。</span>
+
+```bash
+# Expressionウィジェットには「計算された」値が表示されます。この値は実行時に評価され、変数などに応じて変わります。
+```
 
 ##### ９、次のうち、Imageウィジェットに関する説明として正しいものはどれですか。
 
@@ -246,11 +282,19 @@ C、データベース内に保存されている画像のみを表示する。
 
 <span style="color:red;background:yellow;">D、静的な画像、URLにある画像、データベース内の画像を表示する。</span>
 
+```bash
+# 画像のソースはTypeプロパティで定義します。Static、External、Databaseが選択可能な値です。
+```
+
 ##### １０、次のうち、Table Recordsウィジェットに関する説明として正しいものはどれですか。
 
 A、レコードを1列に1件ずつの表形式レイアウトで表示する。
 
 <span style="color:red;background:yellow;">B、レコードを1行に1件ずつの表形式レイアウトで表示する。</span>
+
+```bash
+# Table Recordsウィジェットは、レコードのリストを表示するときに使用します。 各行がレコードに対応し、多くの場合、列はレコードのアトリビュートです。
+```
 
 C、レコードを1テーブルに1件ずつの表形式レイアウトで表示する。
 
@@ -261,6 +305,10 @@ D、レコードを自由形式で表示する。
 A、TRUE
 
 <span style="color:red;background:yellow;">B、FALSE</span>
+
+```bash
+# このウィジェットのレイアウトは自由度が高く、ニーズに応じて様々なウィジェットを追加したり整理したりできます。
+```
 
 
 
@@ -274,11 +322,19 @@ A、TRUE
 
 <span style="color:red;background:yellow;">B、FALSE</span>
 
+```bash
+# OutSystemsは、デフォルトでは複合キーをサポートしていませんが、インデックスを使用してその動作を模倣することができます。
+```
+
 ##### ２、OutSystemsで実装できるリレーションのタイプをすべて挙げてください。
 
 A、1対多と多対多。
 
 <span style="color:red;background:yellow;">B、1対1、1対多、および多対多。</span>
+
+```bash
+# OutSystemsでは、これら3つのタイプのデータリレーションを使用して、リッチなデータモデルを実装することができます。
+```
 
 C、1対1と1対多。
 
@@ -290,6 +346,10 @@ A、各親エンティティを参照する複合キー。
 
 <span style="color:red;background:yellow;">B、識別子と各親エンティティに対する外部キー。</span>
 
+```bash
+# 交差エンティティにはそれ自体の識別子と、リレーションの各エンティティの参照識別子があります。
+```
+
 C、各親エンティティに対する外部キーと交差レコード数。
 
 D、Id、Label、Order、Is Active。
@@ -299,6 +359,10 @@ D、Id、Label、Order、Is Active。
 A、Protect
 
 <span style="color:red;background:yellow;">B、Delete</span>
+
+```bash
+# 「Delete」は、削除されるレコードに対する外部キー参照を持つすべてのレコードのカスケード削除を実行します。
+```
 
 C、Ignore
 
@@ -316,11 +380,19 @@ B、Buttonでできるのは、リクエストの送信のみである。
 
 <span style="color:red;background:yellow;">C、LinkとButtonでできるのは、画面への移動やリクエストの送信である。</span>
 
+```bash
+# ユーザーは、LinkやButtonをクリックまたはタップすることにより、アプリケーションを操作できます。これにより、アクションをトリガーしたり、データを送信したり、別の画面に移動することができます。
+```
+
 D、LinkとButtonでできるのは、画面への移動のみである。
 
 ##### ２、次のうち、Navigateメソッドを使用するButtonをクリックした後の画面のライフサイクルの順序として正しいものはどれですか。
 
 <span style="color:red;background:yellow;">A、Preparationを実行した後、遷移先画面を描画する。</span>
+
+```bash
+# ボタンをクリックすると、サーバーで遷移先画面のPreparationが処理され、ブラウザ上に描画するデータが準備されます。
+```
 
 B、画面アクションを実行し、Preparationを実行し、遷移先画面を描画する。
 
@@ -334,6 +406,10 @@ A、PUT
 
 <span style="color:red;background:yellow;">B、POST</span>
 
+```bash
+# POSTメソッドは、ファイルをアップロードするときやフォームのデータを送信するときによく使用されます。
+```
+
 C、GET
 
 D、PATCH
@@ -344,6 +420,10 @@ A、TRUE
 
 <span style="color:red;background:yellow;">B、FALSE</span>
 
+```bash
+# そのとおりです。Endの場合は画面の変数とウィジェットの値が保持されるのに対し、Destinationの場合はデフォルト値にリセットされます。
+```
+
 ##### ５、次のうち、2つのエンティティ間で「With or Without」結合を実行したときに返されるのはどれですか。
 
 A、両方のエンティティのすべてのレコードを返す（FULL OUTER JOIN）。
@@ -352,6 +432,10 @@ B、2つのエンティティの間で対応するレコードのみを返す（
 
 <span style="color:red;background:yellow;">C、右のエンティティに対応するレコードがない場合でも、左のエンティティのレコードをすべて返す（LEFT JOIN）。</span>
 
+```bash
+# 「A Customer With or Without Orders」は、SQLの「...Customer LEFT JOIN Order...」に相当します。
+```
+
 D、左のエンティティに対応するレコードがない場合でも、右のエンティティのレコードをすべて返す（RIGHT JOIN）。
 
 ##### ６、 次のうち、Aggregateで列が非表示になっている場合の説明として正しいものはどれですか。
@@ -359,6 +443,10 @@ D、左のエンティティに対応するレコードがない場合でも、�
 A、Aggregateの出力に含まれなくなる。
 
 <span style="color:red;background:yellow;">B、引き続きAggregateの出力に含まれる。</span>
+
+```bash
+# 列を非表示にしても、Aggregateの出力には影響を及ぼしません。ただし、OutSystemsでは、クエリの外で使用されている出力アトリビュートに基づいて取得される列が最適化されます。
+```
 
 C、これらの列のみがAggregateの出力になる。
 
@@ -370,6 +458,10 @@ A、アトリビュートの集約結果が他のエンティティアトリビ�
 
 <span style="color:red;background:yellow;">B、アトリビュートの集約結果のみがAggregateの出力に含まれる。</span>
 
+```bash
+# アトリビュートを集約するとAggregateの出力が変わり、計算後の集約された列のみが返されます。 Aggregateの出力に含まれるアトリビュートはすべて青色で表示されるため、視覚的に検証することができます。
+```
+
 ##### ８、次のうち、SQLクエリ内でエンティティおよびエンティティアトリビュートの名前を記述する場合の正しい構文はどれですか。
 
 A、<Entity>と<Entity>.[Attribute]
@@ -377,6 +469,10 @@ A、<Entity>と<Entity>.[Attribute]
 B、{Entity}と{Entity}.<Attribute>
 
 <span style="color:red;background:yellow;">C、{Entity}と{Entity}.[Attribute]</span>
+
+```bash
+# エンティティ名を{Entity}と記述し、アトリビュート名を{Entity}.[Attribute]と記述します。
+```
 
 D、<Entity>と<Entity>.<Attribute>
 
@@ -386,6 +482,10 @@ A、TRUE
 
 <span style="color:red;background:yellow;">B、FALSE</span>
 
+```bash
+# たとえば、DELETE、INSERT、UPDATEなどのSQL文をSQLクエリで使用できます。
+```
+
 ##### １０、Check Boxウィジェットがバインドされるのは、どの型の変数ですか。
 
 A、Text
@@ -393,6 +493,10 @@ A、Text
 B、Integer
 
 <span style="color:red;background:yellow;">C、Boolean</span>
+
+```bash
+# Check BoxウィジェットはBoolean型変数にバインドされ、チェックの有無に応じて変数をTrueまたはFalseに設定します。
+```
 
 D、Date
 
@@ -404,13 +508,21 @@ B、Source Record Listプロパティを使用して、レコードのリスト�
 
 <span style="color:red;background:yellow;">C、Special Listセクションを使用して、エンティティまたは静的エンティティから選択肢を取得する。</span>
 
+```bash
+# Special Listの値は英数字の値のペアのみで構成されている必要があります。
+```
+
 D、Special Listセクションを使用して、特殊な選択肢を手動で設定する。
 
 ##### １２、Combo Boxウィジェットに表示される値のリストでは、エンティティと特殊リストを組み合わせることができます。
 
-<span style="color:red;background:yellow;">A、TRUE</span>
+<span style="color:red;background:yellow;">A、正しい</span>
 
-B、FALSE
+```bash
+# エンティティまたはレコードリストで提供される値と特殊リストの他の値と組み合わせることができます。
+```
+
+B、誤り
 
 
 
@@ -426,6 +538,10 @@ B、入力パラメータとローカル変数を使用できるが、出力パ�
 
 <span style="color:red;background:yellow;">C、入力パラメータ、出力パラメータ、およびローカル変数。</span>
 
+```bash
+# サーバーアクションを使用することにより、コードの再利用性が向上し、任意のアクションフロー内で呼び出すことができます。
+```
+
 D、出力パラメータとローカル変数を使用できるが、入力パラメータは使用できない。
 
 ##### ２、次のうち、サーバーアクションのフローを設計する場合の説明として正しいものはどれですか。
@@ -435,6 +551,10 @@ A、複数のStartノードとEndノードを含めることができる。
 B、Startノードは1つまたは複数含めることができるが、Endノードは1つのみ含めることができる。
 
 <span style="color:red;background:yellow;">C、Startノードは1つのみ含めることができるが、Endノードは1つまたは複数含めることができる。</span>
+
+```bash
+# アクションフローにはStartノードを1つのみ含めることができ、異なるEndノードまたはRaise Exceptionノードで終了することができます。
+```
 
 D、StartノードもEndノードも1つのみ含めることができる。
 
@@ -448,11 +568,19 @@ C、Otherwiseブランチは必須である。
 
 <span style="color:red;background:yellow;">D、評価がTrueになるすべてのブランチが実行される。</span>
 
+```bash
+# Switchのいずれかのブランチのみが実行されます。具体的には、評価がTrueになる最初のブランチです。Trueになるブランチがない場合は、Otherwiseが実行されます。
+```
+
 ##### ４、次のうち、アクションフロー内に複数の例外ハンドラがあるときに例外が発生した場合の説明として正しいものはどれですか。
 
 A、実行は、常にグローバル例外ハンドラに移動される。
 
 <span style="color:red;background:yellow;">B、実行は、例外に最も適した例外ハンドラに移動される。</span>
+
+```bash
+# 例外によって処理を担当するハンドラは異なります。
+```
 
 C、実行は、アクションのすべての例外ハンドラに移動される。
 
@@ -464,6 +592,10 @@ A、必須の値、正しいデータ型、およびビジネスルール。
 
 <span style="color:red;background:yellow;">B、必須の値と正しいデータ型。</span>
 
+```bash
+# OutSystemsの入力ウィジェットのビルトイン検証では、必須フィールドが入力されているかどうかと、入力された値が変数のデータ型に適合しているかどうかが検証されます。
+```
+
 C、正しいデータ型とビジネスルール。
 
 D、必須の値とビジネスルール。
@@ -473,6 +605,10 @@ D、必須の値とビジネスルール。
 A、すべての必須フィールドが空の場合、サーバー側でカスタム検証が実行される。
 
 <span style="color:red;background:yellow;">B、ビルトイン検証はまずクライアント側で実行され、有効ではない場合、ただちにユーザーに対してエラーメッセージが表示される。</span>
+
+```bash
+# ビルトイン検証はまずクライアント側で実行され、データ型がまだ適合していない場合にサーバーへの不要なリクエストが行われないようにします。
+```
 
 C、ビルトイン検証はまずクライアント側で実行され、結果にかかわらずサーバーへのリクエストが行われ、カスタム検証が実行される。
 
@@ -486,6 +622,10 @@ B、ウィジェットが非表示になり、その場所に検証エラーメ�
 
 <span style="color:red;background:yellow;">C、通常のウィジェットが表示され、特定のスタイル（赤枠など）が適用され、検証エラーメッセージが表示される。</span>
 
+```bash
+# 赤枠によって無効なウィジェットが視覚的にユーザーに示され、エラーメッセージによって問題の内容とその修正方法がわかります。
+```
+
 D、通常のウィジェットが表示され、マウスポインタを重ねると検証エラーメッセージが表示される。
 
 ##### ８、次のうち、OutSystemsのデバッガで利用できないコマンドはどれですか。
@@ -498,9 +638,17 @@ C、Step Over
 
 <span style="color:red;background:yellow;">D、Restart Debugging</span>
 
+```bash
+# インスタンスの実行中にデバッグを再開することはできません。ただし、停止してからもう一度開始することは可能です。
+```
+
 ##### ９、OutSystemsでは、デバッグ中に変数の値を検査することができます。
 
 <span style="color:red;background:yellow;">A、TRUE</span>
+
+```bash
+# コードのデバッグ中、スコープに基づいて変数の値を検査することができます。
+```
 
 B、FALSE
 
@@ -509,6 +657,10 @@ B、FALSE
 A、Service Studio
 
 <span style="color:red;background:yellow;">B、Service Center</span>
+
+```bash
+# Service Centerは、環境の運用管理を実行できるWebコンソールです。
+```
 
 C、Log Center
 
@@ -716,8 +868,6 @@ A、WSDLを指定（エンドポイントURLを指定するか、ファイルを
 # テストを実行してJSONレスポンスを取得する代わりに、REST APIドキュメントでメソッドと予測されるJSONレスポンスを参照します。そのJSONを本文にコピーすることもできます。
 ```
 
-
-
 B、WSDLを指定（エンドポイントURLを指定するか、ファイルをアップロード）し、バインディングを選択（複数ある場合）し、利用するメソッドを選択する。
 
 ##### ３、RESTサービスを利用する場合に外部サービスに送信されるリクエストをカスタマイズするには、どのコールバックアクションを使用する必要がありますか。
@@ -747,8 +897,6 @@ B、いいえ
 
 
 ---
-
-
 
 ### 十、テーマと高度なUI
 
@@ -876,15 +1024,9 @@ A、エンティティをUIフローにドラッグ&ドロップすると、リ�
 
 
 
- 
-
-
+---
 
 ## 他のテストリソース
-
-
-
----
 
 ### データベースエンティティ
 
