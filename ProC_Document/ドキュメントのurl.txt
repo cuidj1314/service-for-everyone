@@ -1,11 +1,3 @@
 ブラウザ版：
 12C：
 12.1　https://docs.oracle.com/cd/E57425_01/121/LNPCC/toc.htm
-12.2　https://docs.oracle.com/cd/E82638_01/lnpcc/index.html
-
-
-
-19C https://docs.oracle.com/cd/F19136_01/lnpcc.pdf
-
-21C：
-https://docs.oracle.com/cd/F39414_01/lnpcc/index.html
